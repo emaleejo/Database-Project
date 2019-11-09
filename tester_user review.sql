@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.18, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: tester
+-- Host: localhost    Database: tester
 -- ------------------------------------------------------
 -- Server version	8.0.18
 
@@ -25,7 +25,6 @@ DROP TABLE IF EXISTS `user review`;
 CREATE TABLE `user review` (
   `ISBN` int(11) NOT NULL,
   `Review` varchar(45) NOT NULL,
-  `User Reviewcol` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`ISBN`,`Review`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -48,4 +47,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-11-05 17:59:37
+-- Dump completed on 2019-11-09 17:51:01

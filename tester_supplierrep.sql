@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.18, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: tester
+-- Host: localhost    Database: tester
 -- ------------------------------------------------------
 -- Server version	8.0.18
 
@@ -26,8 +26,8 @@ CREATE TABLE `supplierrep` (
   `Id` int(11) NOT NULL,
   `First_Name` varchar(45) NOT NULL,
   `Last_Name` varchar(45) NOT NULL,
-  `Cell_Num` int(11) NOT NULL,
-  `Work_Num` int(11) NOT NULL,
+  `Cell_Num` varchar(45) DEFAULT NULL,
+  `Work_Num` varchar(45) DEFAULT NULL,
   `Email` varchar(45) NOT NULL,
   PRIMARY KEY (`Id`,`First_Name`,`Last_Name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -39,6 +39,7 @@ CREATE TABLE `supplierrep` (
 
 LOCK TABLES `supplierrep` WRITE;
 /*!40000 ALTER TABLE `supplierrep` DISABLE KEYS */;
+INSERT INTO `supplierrep` VALUES (901,'John','Cena','903-927-8493','903-223-8345','John.Cena@wwe.com'),(902,'Stephen','Austin','936-468-2504','936-468-2501','Stephen.Austin.sfasu.edu'),(903,'Henry','Davidson','943-324-5566','945-998-0987','Henry.Davidson@gmail.com'),(904,'David','Wilkerson','997-125-7364','932-923-7465','David.Wilkerson@hotmail.com');
 /*!40000 ALTER TABLE `supplierrep` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-11-05 17:59:38
+-- Dump completed on 2019-11-09 17:51:01

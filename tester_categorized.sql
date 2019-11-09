@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.18, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: tester
+-- Host: localhost    Database: tester
 -- ------------------------------------------------------
 -- Server version	8.0.18
 
@@ -35,6 +35,7 @@ CREATE TABLE `categorized` (
 
 LOCK TABLES `categorized` WRITE;
 /*!40000 ALTER TABLE `categorized` DISABLE KEYS */;
+INSERT INTO `categorized` VALUES (121,131),(122,132),(123,133),(124,134),(125,135);
 /*!40000 ALTER TABLE `categorized` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -47,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-11-05 17:59:39
+-- Dump completed on 2019-11-09 17:51:02

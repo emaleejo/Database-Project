@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.18, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: tester
+-- Host: localhost    Database: tester
 -- ------------------------------------------------------
 -- Server version	8.0.18
 
@@ -39,6 +39,7 @@ CREATE TABLE `author` (
 
 LOCK TABLES `author` WRITE;
 /*!40000 ALTER TABLE `author` DISABLE KEYS */;
+INSERT INTO `author` VALUES (1,'Joe','Shmo','Male','1997-12-16','1'),(2,'Jane','Shmo','Female','1998-12-18','2'),(3,'Josh','Stone','Male','1975-04-20','3'),(4,'Shelly','Johnson','Female','1986-03-04','4'),(5,'Joe','Burrow','Male','1996-12-10','5');
 /*!40000 ALTER TABLE `author` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-11-05 17:59:36
+-- Dump completed on 2019-11-09 17:51:00

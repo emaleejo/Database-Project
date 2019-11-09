@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.18, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: tester
+-- Host: localhost    Database: tester
 -- ------------------------------------------------------
 -- Server version	8.0.18
 
@@ -24,8 +24,8 @@ DROP TABLE IF EXISTS `phone`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `phone` (
   `CID` int(11) NOT NULL,
-  `Number` int(11) NOT NULL,
-  PRIMARY KEY (`Number`)
+  `number` varchar(45) NOT NULL,
+  PRIMARY KEY (`number`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -35,6 +35,7 @@ CREATE TABLE `phone` (
 
 LOCK TABLES `phone` WRITE;
 /*!40000 ALTER TABLE `phone` DISABLE KEYS */;
+INSERT INTO `phone` VALUES (4,'-2555'),(5,'-3608'),(10,'-7278'),(1,'-7767'),(9,'-8349'),(8,'-8506'),(7,'-8598'),(2,'-8873'),(11,'-8959'),(3,'-9126'),(6,'-9945');
 /*!40000 ALTER TABLE `phone` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -47,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-11-05 17:59:37
+-- Dump completed on 2019-11-09 17:51:01

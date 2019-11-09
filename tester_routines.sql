@@ -16,30 +16,12 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `order`
+-- Dumping events for database 'tester'
 --
 
-DROP TABLE IF EXISTS `order`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `order` (
-  `OrderId` int(11) NOT NULL,
-  `Order_Date` date NOT NULL,
-  `Order_Value` int(11) NOT NULL,
-  `CID` int(11) NOT NULL,
-  PRIMARY KEY (`OrderId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
 --
--- Dumping data for table `order`
+-- Dumping routines for database 'tester'
 --
-
-LOCK TABLES `order` WRITE;
-/*!40000 ALTER TABLE `order` DISABLE KEYS */;
-INSERT INTO `order` VALUES (301,'2019-08-17',42,6),(302,'2018-04-12',70,7),(303,'2019-11-09',22,8),(304,'2019-01-01',60,9),(305,'2018-12-29',104,10),(306,'2019-01-01',18,11),(307,'2018-12-02',22,8),(308,'2019-08-04',20,6),(309,'2017-06-23',32,7),(310,'2015-02-19',12,10);
-/*!40000 ALTER TABLE `order` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -50,4 +32,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-11-09 17:51:04
+-- Dump completed on 2019-11-09 17:51:05

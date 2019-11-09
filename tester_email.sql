@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.18, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: tester
+-- Host: localhost    Database: tester
 -- ------------------------------------------------------
 -- Server version	8.0.18
 
@@ -36,6 +36,7 @@ CREATE TABLE `email` (
 
 LOCK TABLES `email` WRITE;
 /*!40000 ALTER TABLE `email` DISABLE KEYS */;
+INSERT INTO `email` VALUES (1,'Joe.Shmo@hotmail.com'),(2,'Jane.Shmo@hotmail.com'),(3,'Josh.Stone@gmail.com'),(4,'Shelly.Johnson@gmail.com'),(5,'Joe.Burrow@lsu.edu'),(6,'Peyton.Manning@HOF.GOAT'),(7,'Archie.Manning@gmail.com'),(8,'Kelsey.Lewis@hotmail.com'),(9,'Grace.Moss@yahoo.com'),(10,'Caroline.Lebeuf@gmail.com'),(11,'Randy.Moss@hotmail.com');
 /*!40000 ALTER TABLE `email` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -48,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-11-05 17:59:37
+-- Dump completed on 2019-11-09 17:51:01
