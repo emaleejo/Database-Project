@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.18, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: tester
+-- Host: localhost    Database: tester
 -- ------------------------------------------------------
 -- Server version	8.0.18
 
@@ -25,7 +25,6 @@ DROP TABLE IF EXISTS `user review`;
 CREATE TABLE `user review` (
   `ISBN` int(11) NOT NULL,
   `Review` varchar(45) NOT NULL,
-  `User Reviewcol` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`ISBN`,`Review`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -36,6 +35,7 @@ CREATE TABLE `user review` (
 
 LOCK TABLES `user review` WRITE;
 /*!40000 ALTER TABLE `user review` DISABLE KEYS */;
+INSERT INTO `user review` VALUES (121,'Ehh'),(121,'The book was too short'),(122,'I didn\'t like this book at all'),(123,'The book was very good.'),(124,'It was okay'),(124,'My favorite author does it again'),(125,'Worst book ever');
 /*!40000 ALTER TABLE `user review` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -48,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-11-05 17:59:37
+-- Dump completed on 2019-11-12 13:07:22
