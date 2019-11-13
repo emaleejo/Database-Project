@@ -20,7 +20,7 @@ class Books:
         e_price = i_price.get()
         conn = mc.connect(user="admin", password="testpassword", host="softwaredb.cqj4mkbkulv0.us-east-2.rds.amazonaws.com", database="tester")
         cur = conn.cursor()
-        cur.execute("insert into Book(book_isbn, book_title, book_PublishDate book_price) values('"+e_code+"', '"+e_title+"', '"+e_PublishDate+"', '"+e_price+"')")
+        cur.execute("insert into book(book_isbn, book_title, book_PublishDate book_price) values('"+e_code+"', '"+e_title+"', '"+e_PublishDate+"', '"+e_price+"')")
         conn.close()
 
     def Book(self):
