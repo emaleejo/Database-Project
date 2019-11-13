@@ -4,14 +4,21 @@ import tkinter.messagebox as tm
 import re
 import os
 
+
+# server address: softwaredb.cqj4mkbkulv0.us-east-2.rds.amazonaws.com
+# user: admin
+# pass: testpassword
+
 class Books:
+
+
 #Book(ISBN, Title, Publish Date, Price)
     def book(*args):
         e_isbn = i_isbn.get()
         e_title = i_title.get()
         e_PublishDate = i_pub.get()
         e_price = i_price.get()
-        conn = mc.connect(user="root", password="mypassword", host="localhost", database="book_test")
+        conn = mc.connect(user="admin", password="testpassword", host="softwaredb.cqj4mkbkulv0.us-east-2.rds.amazonaws.com", database="book_test")
         cur = conn.cursor()
         cur.execute("insert into Book(book_isbn, book_title, book_PublishDate book_price) values('"+e_code+"', '"+e_title+"', '"+e_PublishDate+"', '"+e_price+"')")
         conn.close()
