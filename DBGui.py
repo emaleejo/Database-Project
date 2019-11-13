@@ -13,7 +13,7 @@ class Books:
 
 
 #Book(ISBN, Title, Publish Date, Price)
-    def book(*args):
+    def book(self, *args):
         e_isbn = i_isbn.get()
         e_title = i_title.get()
         e_PublishDate = i_pub.get()
@@ -23,7 +23,7 @@ class Books:
         cur.execute("insert into Book(book_isbn, book_title, book_PublishDate book_price) values('"+e_code+"', '"+e_title+"', '"+e_PublishDate+"', '"+e_price+"')")
         conn.close()
 
-    def Book():
+    def Book(self):
         btk = Tk()
         btk.wm_attributes("-fullscreen", True)
         btk.title("GET DATA")
@@ -54,7 +54,7 @@ class Books:
         Button(mainframe, text="Insert", command=book).grid(row=8, column=1)
 
 class Admins:       
-    def adminlogin():
+    def adminlogin(self):
         altk = Tk()
         altk.wm_attributes("-fullscreen", True)
         altk.title('Admin Login')
@@ -68,7 +68,7 @@ class Admins:
         alogin = Button(altk, text='Login', width=10, height=2, font =('Caviar Dreams',26), fg='black', command=lambda:[Admins.admin(), altk.withdraw()]).grid(row=7, column =2)
     
         
-    def admin():
+    def admin(self):
         atk = Tk()
         atk.wm_attributes("-fullscreen", True)
         atk.title('Admin')
