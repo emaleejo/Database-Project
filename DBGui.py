@@ -13,7 +13,7 @@ class Books:
 
 
 #Book(ISBN, Title, Publish Date, Price)
-    def book(self, *args):
+    def AddBook(self, *args):
         e_isbn = i_isbn.get()
         e_title = i_title.get()
         e_PublishDate = i_pub.get()
@@ -51,7 +51,7 @@ class Books:
         Label(mainframe, text='Book Publish Date', font =('Caviar Dreams',26)).grid(row=6, column=0)
         Label(mainframe, text='Book Price', font =('Caviar Dreams',26)).grid(row=7, column=0)
 
-        Button(mainframe, text="Insert", command=book).grid(row=8, column=1)
+        Button(mainframe, text="Insert", command=Books().AddBook()).grid(row=8, column=1)
 
 class Admins:       
     def adminlogin(self):
@@ -65,14 +65,14 @@ class Admins:
         ap = Entry(altk, width=20, textvariable=adminpassword).grid(row=5, column=3)
         Label(altk, text='Username:', font =('Caviar Dreams',26)).grid(row=4, column=1)
         Label(altk, text='Password:', font =('Caviar Dreams',26)).grid(row=5, column=1)
-        alogin = Button(altk, text='Login', width=10, height=2, font =('Caviar Dreams',26), fg='black', command=lambda:[Admins.admin(), altk.withdraw()]).grid(row=7, column =2)
+        alogin = Button(altk, text='Login', width=10, height=2, font =('Caviar Dreams',26), fg='black', command=lambda:[Admins().admin(), altk.withdraw()]).grid(row=7, column =2)
     
         
     def admin(self):
         atk = Tk()
         atk.wm_attributes("-fullscreen", True)
         atk.title('Admin')
-        addBook = Button(atk, text='Add a Book', width=20, height=3, font =('Caviar Dreams',26), fg='black', command=lambda:[Books.Book(), atk.withdraw()]).pack()
+        addBook = Button(atk, text='Add a Book', width=20, height=3, font =('Caviar Dreams',26), fg='black', command=lambda:[Books().Book(), atk.withdraw()]).pack()
 
 def main():  
     tk = Tk()
@@ -91,7 +91,7 @@ def main():
     #pic.pack()
 
     #Buttons
-    adminV = Button(tk, text='Admin Login', width=20, height=3, font =('Caviar Dreams',26), fg='black', command=lambda:[Admins.adminlogin(), tk.withdraw()]).pack()
+    adminV = Button(tk, text='Admin Login', width=20, height=3, font =('Caviar Dreams',26), fg='black', command=lambda:[Admins().adminlogin(), tk.withdraw()]).pack()
     #userV = Button(tk, text='User Login', width=20, height=3, font =('Caviar Dreams',26), fg='black', command=lambda:[admin(), tk.withdraw()]).pack()
 
     tk.mainloop()
