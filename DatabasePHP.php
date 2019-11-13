@@ -1,9 +1,9 @@
 <?php
-$host="127.0.0.1";
+$host="softwaredb.cqj4mkbkulv0.us-east-2.rds.amazonaws.com";
 $port=3306;
 $socket="";
-$user="root";
-$password="";
+$user="admin";
+$password="testpassword";
 $dbname="tester";
 
 // Creating connection
