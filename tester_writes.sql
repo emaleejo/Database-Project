@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.18, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: tester
+-- Host: localhost    Database: tester
 -- ------------------------------------------------------
 -- Server version	8.0.18
 
@@ -34,6 +34,7 @@ CREATE TABLE `writes` (
 
 LOCK TABLES `writes` WRITE;
 /*!40000 ALTER TABLE `writes` DISABLE KEYS */;
+INSERT INTO `writes` VALUES (1,121),(2,122),(3,123),(4,124),(5,125);
 /*!40000 ALTER TABLE `writes` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -46,4 +47,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-11-05 17:59:37
+-- Dump completed on 2019-11-12 13:07:22
