@@ -28,7 +28,7 @@ CREATE TABLE `order` (
   `Order_Value` int(11) NOT NULL,
   `CID` int(11) NOT NULL,
   PRIMARY KEY (`OrderId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --

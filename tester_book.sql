@@ -29,7 +29,7 @@ CREATE TABLE `book` (
   `Price` int(11) NOT NULL,
   PRIMARY KEY (`ISBN`),
   UNIQUE KEY `ISBN_UNIQUE` (`ISBN`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='this is a book';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='this is a book';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --

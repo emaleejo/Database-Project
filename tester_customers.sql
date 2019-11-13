@@ -30,7 +30,7 @@ CREATE TABLE `customers` (
   PRIMARY KEY (`CustomerID`),
   KEY `ContactID_idx` (`ContactID`),
   CONSTRAINT `ContactID` FOREIGN KEY (`ContactID`) REFERENCES `contact detail` (`ContactID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
