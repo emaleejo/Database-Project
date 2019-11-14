@@ -11,14 +11,15 @@ import os
 
 class Books:
 #Book(ISBN, Title, Publish Date, Price)
+
     def AddBook(self, *args):
-        e_isbn = i_isbn.get()
-        e_title = i_title.get()
-        e_PublishDate = i_pub.get()
-        e_price = i_price.get()
+        e_isbn = self.i_isbn.get()
+        e_title = self.i_title.get()
+        e_PublishDate = self.i_pub.get()
+        e_price = self.i_price.get()
         conn = mc.connect(user="admin", password="testpassword", host="softwaredb.cqj4mkbkulv0.us-east-2.rds.amazonaws.com", database="tester")
         cur = conn.cursor()
-        cur.execute("insert into book(book_isbn, book_title, book_PublishDate book_price) values('"+e_code+"', '"+e_title+"', '"+e_PublishDate+"', '"+e_price+"')")
+        cur.execute("insert into book(book_isbn, book_title, book_PublishDate book_price) values('"+e_isbn+"', '"+e_title+"', '"+e_PublishDate+"', '"+e_price+"')")
         conn.close()
 
     def Book(self):
@@ -34,10 +35,10 @@ class Books:
         i_pub = StringVar()
         i_price = IntVar()
 
-        isbnEntry = Entry(mainframe, width=7, textvariable=i_isbn)
-        titleEntry = Entry(mainframe, width=7, textvariable=i_title)
-        pubEntry = Entry(mainframe, width=7, textvariable=i_pub)
-        priceEntry = Entry(mainframe, width=7, textvariable=i_price)
+        isbnEntry = Entry(mainframe, width=7, textvariable=self.i_isbn)
+        titleEntry = Entry(mainframe, width=7, textvariable=self.i_title)
+        pubEntry = Entry(mainframe, width=7, textvariable=self.i_pub)
+        priceEntry = Entry(mainframe, width=7, textvariable=self.i_price)
 
         isbnEntry.grid(row=4, column=1)
         titleEntry.grid(row=5, column=1)
@@ -92,11 +93,21 @@ class Users:
         utk = Tk()
         utk.wm_attributes("-fullscreen", True)
         utk.title('User')
-        usearch = StringVar()
-        up = Entry(utk, width=20, textvariable=usearch).grid(row=5, column=3)
-        Label(utk, text='Search Books:', font =('Caviar Dreams',26)).grid(row=5, column=1)
-        addBook = Button(utk, text='Show Results', width=10, height=2, font =('Caviar Dreams',26), fg='black').grid(row=7, column =2)
-        #, command=lambda:[utk.withdraw()]        
+        usearch = StringVar(utk)
+        usearchcat = StringVar(utk)
+        usearchcat.set("Books")
+        up = Entry(utk, width=20, textvariable=usearch).grid(row=5, column=4)
+        Label(utk, text='Search for:', font =('Caviar Dreams',26)).grid(row=5, column=1)
+        
+        # The Drop Down Menu ... Super Pain
+        OptionList = [ "Books", "Authors", "Genres"] 
+        utk.wm_attributes("-fullscreen", True)
+        usearchcat.set(OptionList[0])
+        opt = OptionMenu(utk, usearchcat, *OptionList)
+        opt.config(width=10, font=('Caviar Dreams', 12))
+        opt.grid(row = 5, column = 2)
+
+        # This would be a good place to put the show books on
 
 def main():  
     tk = Tk()
