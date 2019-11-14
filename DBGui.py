@@ -10,8 +10,6 @@ import os
 # pass: testpassword
 
 class Books:
-
-
 #Book(ISBN, Title, Publish Date, Price)
     def AddBook(self, *args):
         e_isbn = i_isbn.get()
@@ -74,6 +72,32 @@ class Admins:
         atk.title('Admin')
         addBook = Button(atk, text='Add a Book', width=20, height=3, font =('Caviar Dreams',26), fg='black', command=lambda:[Books().Book(), atk.withdraw()]).pack()
 
+class Users:       
+    def userlogin(self):
+        ultk = Tk()
+        ultk.wm_attributes("-fullscreen", True)
+        ultk.title('User Login')
+        #ulframe = Frame(ultk, width=400, height=400, background='white').grid()
+        Label(ultk, text='User Login:', font =('Caviar Dreams',26)).grid(row=3, column=2)
+        uusername = StringVar()
+        upassword = StringVar()
+        uu = Entry(ultk, width=20, textvariable=uusername).grid(row=4, column=3)
+        up = Entry(ultk, width=20, textvariable=upassword).grid(row=5, column=3)
+        Label(ultk, text='Username:', font =('Caviar Dreams',26)).grid(row=4, column=1)
+        Label(ultk, text='Password:', font =('Caviar Dreams',26)).grid(row=5, column=1)
+        ulogin = Button(ultk, text='Login', width=10, height=2, font =('Caviar Dreams',26), fg='black', command=lambda:[Users().user(), ultk.withdraw()]).grid(row=7, column =2)
+    
+        
+    def user(self):
+        utk = Tk()
+        utk.wm_attributes("-fullscreen", True)
+        utk.title('User')
+        usearch = StringVar()
+        up = Entry(utk, width=20, textvariable=usearch).grid(row=5, column=3)
+        Label(utk, text='Search Books:', font =('Caviar Dreams',26)).grid(row=5, column=1)
+        addBook = Button(utk, text='Show Results', width=10, height=2, font =('Caviar Dreams',26), fg='black').grid(row=7, column =2)
+        #, command=lambda:[utk.withdraw()]        
+
 def main():  
     tk = Tk()
     tk.wm_attributes("-fullscreen", True)
@@ -82,9 +106,10 @@ def main():
     tk.config(menu=menu)
     file = Menu(menu) #File - Exit
     file.add_command(label="Exit", command=tk.destroy)
-    frame = Frame(tk, width=800, height=600, background='white')
+    frame = Frame(tk, width=400, height=400, background='white')
     frame.pack_propagate(0)    
     frame.pack()
+    Label(tk, text='Welcome to the Book Search (??) :', font =('Caviar Dreams',36)).pack()
     # Logo that we created
     #img = PhotoImage(file='ivancicitalianv2.png')
     #pic = Label(frame, image=img)
@@ -92,7 +117,7 @@ def main():
 
     #Buttons
     adminV = Button(tk, text='Admin Login', width=20, height=3, font =('Caviar Dreams',26), fg='black', command=lambda:[Admins().adminlogin(), tk.withdraw()]).pack()
-    #userV = Button(tk, text='User Login', width=20, height=3, font =('Caviar Dreams',26), fg='black', command=lambda:[admin(), tk.withdraw()]).pack()
+    userV = Button(tk, text='User Login', width=20, height=3, font =('Caviar Dreams',26), fg='black', command=lambda:[Users().userlogin(), tk.withdraw()]).pack()
 
     tk.mainloop()
     mainloop() 
