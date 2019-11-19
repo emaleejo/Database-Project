@@ -18,7 +18,7 @@ class Books:
         e_price = self.i_price.get()
         conn = mc.connect(user="admin", password="testpassword", host="softwaredb.cqj4mkbkulv0.us-east-2.rds.amazonaws.com", database="tester")
         cur = conn.cursor()
-        cur.execute("insert into book(book_isbn, book_title, book_PublishDate book_price) values('"+e_isbn+"', '"+e_title+"', '"+e_PublishDate+"', '"+e_price+"')")
+        cur.execute("insert into book(ISBN, Title, Publish Date, Price) values('"+e_isbn+"', '"+e_title+"', '"+e_PublishDate+"', '"+e_price+"')")
         conn.close()
 
     def Book(self):
@@ -86,7 +86,7 @@ class Users:
         Label(ultk, text='Username:', font =('Caviar Dreams',26)).grid(row=4, column=1)
         Label(ultk, text='Password:', font =('Caviar Dreams',26)).grid(row=5, column=1)
         ulogin = Button(ultk, text='Login', width=10, height=2, font =('Caviar Dreams',26), fg='black', command=lambda:[Users().user(), ultk.withdraw()]).grid(row=7, column =2)
-    
+        ulback = Button(ultk, text='Back',font =('Caviar Dreams' ,26), width=10, height=2, fg='black', command=lambda:[ultk.withdraw(),tk.deiconify()]).grid(row=8, column = 2)
         
     def user(self):
         utk = Tk()
