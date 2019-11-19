@@ -86,7 +86,7 @@ class Users:
         Label(ultk, text='Username:', font =('Caviar Dreams',26)).grid(row=4, column=1)
         Label(ultk, text='Password:', font =('Caviar Dreams',26)).grid(row=5, column=1)
         ulogin = Button(ultk, text='Login', width=10, height=2, font =('Caviar Dreams',26), fg='black', command=lambda:[Users().user(), ultk.withdraw()]).grid(row=7, column =2)
-        ulback = Button(ultk, text='Back',font =('Caviar Dreams' ,26), width=10, height=2, fg='black', command=lambda:[ultk.withdraw(),Main().tk.deiconify()]).grid(row=8, column = 2)
+        ulback = Button(ultk, text='Back',font =('Caviar Dreams' ,26), width=10, height=2, fg='black', command=lambda:[ultk.withdraw(),main().tk.deiconify()]).grid(row=8, column = 2)
         
     def user(self):
         utk = Tk()
