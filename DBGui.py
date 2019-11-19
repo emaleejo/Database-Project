@@ -1,6 +1,5 @@
 from tkinter import *
 import mysql.connector as mc
-import tkinter.messagebox as tm
 import re
 import os
 
@@ -120,11 +119,11 @@ def main():
     frame = Frame(tk, width=400, height=400, background='white')
     frame.pack_propagate(0)    
     frame.pack()
-    Label(tk, text='Welcome to the Book Search (??) :', font =('Caviar Dreams',36)).pack()
+    Label(tk, text='Select a Sign In Option', font =('Caviar Dreams',36)).pack(side = TOP)
     # Logo that we created
-    #img = PhotoImage(file='ivancicitalianv2.png')
-    #pic = Label(frame, image=img)
-    #pic.pack()
+    img = PhotoImage(file='librarylogo.png')
+    pic = Label(frame, image=img)
+    pic.pack(side = BOTTOM)
 
     #Buttons
     adminV = Button(tk, text='Admin Login', width=20, height=3, font =('Caviar Dreams',26), fg='black', command=lambda:[Admins().adminlogin(), tk.withdraw()]).pack()
