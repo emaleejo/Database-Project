@@ -29,10 +29,10 @@ class Books:
         mainframe = Frame(btk)
         mainframe.pack()
 
-        i_isbn = IntVar()
-        i_title = StringVar()
-        i_pub = StringVar()
-        i_price = IntVar()
+        self.i_isbn = IntVar()
+        self.i_title = StringVar()
+        self.i_pub = StringVar()
+        self.i_price = IntVar()
 
         isbnEntry = Entry(mainframe, width=7, textvariable=self.i_isbn)
         titleEntry = Entry(mainframe, width=7, textvariable=self.i_title)
@@ -70,7 +70,7 @@ class Admins:
         atk = Tk()
         atk.wm_attributes("-fullscreen", True)
         atk.title('Admin')
-        addBook = Button(atk, text='Add a Book', width=20, height=3, font =('Caviar Dreams',26), fg='black', command=lambda:[Books().Book(), atk.withdraw()]).pack()
+        addBookbutton = Button(atk, text='Add a Book', width=20, height=3, font =('Caviar Dreams',26), fg='black', command=lambda:[Books().Book(), atk.withdraw()]).pack()
 
 class Users:       
     def userlogin(self):
