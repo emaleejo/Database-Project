@@ -1,0 +1,55 @@
+Creating a new customer
+//these next three need to be ran at the same time
+insert into tester.`contact detail`
+values (default);
+
+insert into tester.email
+values (last_insert_id(), ....);
+
+insert into tester.customers
+values (default, ... , ..., last_insert_id());
+
+Reviews 
+
+select title, tester.`user review`.Review from tester.book
+left join tester.`user review` on tester.book.isbn = tester.`user review`.ISBN;
+
+Book
+
+select isbn from tester.book;
+
+select titles from tester.book;
+
+select * from tester.book
+where isbn = .....;
+
+select * from tester.book
+
+
+Authors
+select * from author;
+
+select `first name`, `last name` tester.author;
+
+//put in the authors name and returns the books 
+//is whatever puts in the textbox to search
+
+select * from tester.book
+left join tester.writes on tester.book.ISBN = tester.writes.ISBN
+left join tester.author on tester.writes.AuthorID = tester.author.AuthorID
+where `first name` = ..... and `last name` = .....;
+
+
+Category 
+
+//can do whatever depending on what we want it to show
+
+select tester.book.ISBN, title, `publish date`, price, tester.category.CategoryDescription as category from tester.book
+left join tester.categorized on tester.book.ISBN = tester.categorized.ISBN
+left join tester.category on tester.categorized.CategoryCode = tester.category.CategoryCode;
+
+select tester.book.ISBN, title, `publish date`, price, tester.category.CategoryDescription as category from tester.book
+left join tester.categorized on tester.book.ISBN = tester.categorized.ISBN
+left join tester.category on tester.categorized.CategoryCode = tester.category.CategoryCode
+where tester.category.CategoryDescription = '......';
+
