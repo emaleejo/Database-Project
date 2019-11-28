@@ -1,0 +1,13 @@
+<!-- templates/search.html -->
+{% extends 'base.html' %}
+{% block content %}
+
+<form class="form-inline my-2 my-lg-0">
+<p>&nbsp;</p>
+<p style="text-align: center;">Book Search</p>
+<p style="text-align: center;"><strong><input class="form-control mr-sm-2" name="search" type="search" placeholder="Book Name" aria-label="Search" /> </strong><button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button></p>
+<p style="text-align: center;">&nbsp;</p>
+<p style="text-align: center;"><input name="type" type="radio" value="book" />&nbsp;Books<br /> <input name="type" type="radio" value="author" />&nbsp;Authors<br /> <input name="type" type="radio" value="genres" />&nbsp;Genres</p>
+</form>
+
+{% endblock %}

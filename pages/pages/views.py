@@ -8,3 +8,6 @@ class HomePageView(TemplateView):
 
 class AboutPageView(TemplateView): # new
     template_name = 'about.html'
+
+class SearchPageView(TemplateView): # new
+    template_name = 'search.html'
