@@ -77,15 +77,13 @@ WSGI_APPLICATION = 'pages_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-
+        'ENGINE': 'django.db.backends.mysql',
         #'ENGINE': 'django.db.backends.postgresql',
-        #'NAME': 'database',                        #<-- database name
-        #'USER': 'admin',                        #<-- database username
-        #'PASSWORD': 'testpassword',                     #<-- database password
-        #'HOST': 'localhost',
-        #'PORT': '8000',                             #<-- Change it port you're using
+        'NAME': 'tester',                        #<-- database name
+        'USER': 'admin',                        #<-- database username
+        'PASSWORD': 'testpassword',                     #<-- database password
+        'HOST': 'softwaredb.cqj4mkbkulv0.us-east-2.rds.amazonaws.com',
+        'PORT': '3306',                             #<-- Change it port you're using
     }
 }
 
