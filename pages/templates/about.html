@@ -1,26 +1,11 @@
 <!-- templates/about.html -->
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% block content %}
-<html>
-<header>
-    <title>About Us</title>
-    <style>
-        body{
-            background-color: rgb(236, 249, 250);
-        }
-        p{
-            background-color: rgb(54, 189, 223);
-            border:3pt double red;
-            font-size:30px;
-            text-align: center;
-        }
-    </style>
-</header>    
-<body>
-<h1 style="text-align: center; font-family:'Courier New', Courier, monospace;">ABOUT PAGE</h1>
+
+<h1 style="text-align: center;padding-top: 50pt;padding-bottom:50pt;">ABOUT US</h1>
 
 <p>This page is "Ivancic's Bookstore," which is a project Emalee Keesler, Ruben Orozco, and Morgan Browning made for Database Management Systems taught by Dr. Ivancic.</p>
-<p>The database was created using MySQL Workbench. The frontend was created in Python using Django in which the Templates were written in html.</p>
-</body>
-</html>
-{% endblock %}
+<p>The database was created using MySQL Workbench. 
+    The frontend was created in Python using Django in which the Templates were written in html.</p>
+
+{% endblock content %}

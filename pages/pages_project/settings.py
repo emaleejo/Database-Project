@@ -83,10 +83,12 @@ DATABASES = {
         'USER': 'admin',                        #<-- database username
         'PASSWORD': 'testpassword',                     #<-- database password
         'HOST': 'softwaredb.cqj4mkbkulv0.us-east-2.rds.amazonaws.com',
-        'PORT': '3306',                             #<-- Change it port you're using
+        'PORT': '3306',                         #<-- Change it port you're using
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",                           
+        }
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -125,3 +127,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')

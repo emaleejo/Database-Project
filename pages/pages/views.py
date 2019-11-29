@@ -1,15 +1,15 @@
 # pages/views.py
-from django.views.generic import TemplateView
+# from django.views.generic import TemplateView
+from django.shortcuts import render
 from django.http import HttpResponse
 
 
-def index(request):
-    return HttpResponse("Hello, world. You're at the polls index.")
+def home(request):
+    # return HttpResponse('<h1>test</h1>')
+    return render(request, 'home.html', {'title': 'Home'} )
 
-class HomePageView(TemplateView):
-    template_name = 'home.html'
-class AboutPageView(TemplateView): # new
-    template_name = 'about.html'
+def about(request):
+    return render(request, 'about.html', {'title':'About'})
 
-class SearchPageView(TemplateView): # new
-    template_name = 'search.html'
+def browse(request):
+    return render(request, 'browse.html', {'title':'Browse'})

@@ -1,19 +1,11 @@
 <!-- templates/home.html -->
-<!-- {% block content %} -->
-<html>
-    <header>
-        <div>
-        <a href="{% url 'home' %}">Home</a> | 
-        <a href="{% url 'about' %}">About</a> | 
-        <a href="{% url 'search' %}">Search</a>
-        </div>
-    </header>
-<body>
+{% extends 'base.html' %}
+{% block content %}
+
     <h1 style="text-align: center;">Welcome to</h1>
     <p style="text-align: center;">
         
         <img src="https://i.imgur.com/qJiWwDQ.png" alt="Logo" width="512" height="258" />
     </p>
-</body>
-</html>
-<!-- {% endblock content %} -->
+
+{% endblock content %}
