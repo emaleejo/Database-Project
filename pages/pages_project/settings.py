@@ -25,7 +25,8 @@ SECRET_KEY = '$5**bxl^7tm()+=0&^kc)7y63*$ktj*d)#8jk($l0hsal7q@6m'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+from socket import gethostbyname, gethostname
+ALLOWED_HOSTS = [gethostname(), gethostbyname(gethostname()), 'localhost','127.0.0.1']
 
 
 # Application definition
