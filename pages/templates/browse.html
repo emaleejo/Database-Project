@@ -3,11 +3,24 @@
 {% block content %}
 
 <form class="form-inline my-2 my-lg-0">
-<p>&nbsp;</p>
-<p style="text-align: center;">Book Search </p>
-<p style="text-align: center;"><strong><input class="form-control mr-sm-2" name="search" type="search" placeholder="Book Name" aria-label="Search" /> </strong><button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button></p>
-<p style="text-align: center;">&nbsp;</p>
-<p style="text-align: center;"><input name="type" type="radio" value="book" />&nbsp;Books<br /> <input name="type" type="radio" value="author" />&nbsp;Authors<br /> <input name="type" type="radio" value="genres" />&nbsp;Genres</p>
+    <p style="text-align: center;"> Search: </p>
+    <p style="text-align: center;">&nbsp;</p>
+    <p style="text-align: center;">
+        <strong><input class="form-control mr-sm-2" name="search" type="search" placeholder="Browse" aria-label="Search" /></strong>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button></p>
+    <p style="text-align: center;">&nbsp;</p>
+    <label class="radio-inline">
+        <input type="radio" name="searchOption" id="radioTitle" value="optionTitle" />&nbsp; Book Title &nbsp;
+    </label>
+    <label class="radio-inline">
+        <input type="radio" name="searchOption" id="radioISBN" value="optionISBN" />&nbsp; ISBN &nbsp;
+    </label>
+    <label class="radio-inline">
+        <input type="radio" name="searchOption" id="radioAuthor" value="optionAuthor" />&nbsp;  Author &nbsp;
+    </label>
+    <label class="radio-inline">
+        <input type="radio" name="searchOption" id="radioCategory" value="optionCategory" />&nbsp; Category &nbsp;
+    </label>
 </form>
 
 {% for b in books %}

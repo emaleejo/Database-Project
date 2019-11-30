@@ -13,7 +13,7 @@ body {
   }
   
   .bg-steel {
-    background-color: #5f788a;
+    background-color: #994de0;
   }
   
   .site-header .navbar-nav .nav-link {
@@ -33,7 +33,7 @@ body {
     padding: 10px 20px;
     border: 1px solid #dddddd;
     border-radius: 3px;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
   }
   
   .article-title {
