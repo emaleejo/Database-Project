@@ -47,12 +47,17 @@ class Book(models.Model):
     title = models.CharField(max_length=45)
     publish_date = models.DateField()
     price = models.DecimalField(max_digits=3,decimal_places=2)
-    categorized = models.ManyToManyField(Category)
-    author = models.ManyToManyField(Author)
+    categorized = models.ManyToManyField('Category')
+    author = models.ManyToManyField('Author')
+    # list_author = ', '.join(['{0} {1}'.format(a.first_name, a.last_name) for a in author.all()[:3]])
+    
+    def get_category(self):
+        """Creates a string for the Genre. This is required to display genre in Admin."""
+        return ', '.join([c.__str__() for c in self.categorized.all()[:3]])
 
-    # def display_genre(self):
-    #     """Creates a string for the Genre. This is required to display genre in Admin."""
-    #     return ', '.join([genre.name for genre in self.categorized.all()[:3]])
+    def get_author(self):
+        """Creates a string for the Genre. This is required to display genre in Admin."""
+        return ', '.join(['{0} {1}'.format(a.first_name, a.last_name) for a in self.author.all()[:3]])
 
     def __str__(self):
         return self.title

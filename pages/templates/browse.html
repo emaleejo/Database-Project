@@ -2,15 +2,15 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<form class="form-inline my-2 my-lg-0">
+<form class="form-inline my-2 my-lg-0" method="GET">
     <p style="text-align: center;"> Search: </p>
     <p style="text-align: center;">&nbsp;</p>
     <p style="text-align: center;">
-        <strong><input class="form-control mr-sm-2" name="search" type="search" placeholder="Browse" aria-label="Search" /></strong>
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button></p>
+        <input class="form-control mr-sm-2" name="q" id="id_q" type="text" placeholder="Browse" aria-label="Search" />
+        <!-- <button class="btn btn-outline-success my-2 my-sm-0" id="filter" type="submit">Search</button></p> -->
     <p style="text-align: center;">&nbsp;</p>
     <label class="radio-inline">
-        <input type="radio" name="searchOption" id="radioTitle" value="optionTitle" />&nbsp; Book Title &nbsp;
+        <input type="radio" checked="checked" name="searchOption" id="radioTitle" value="optionTitle" />&nbsp; Book Title &nbsp;
     </label>
     <label class="radio-inline">
         <input type="radio" name="searchOption" id="radioISBN" value="optionISBN" />&nbsp; ISBN &nbsp;
@@ -23,17 +23,45 @@
     </label>
 </form>
 
-{% for b in books %}
-    <article class="media content-section">
-        <div class="media-body">
-            <div class="aritcle-metadata">
-                <a class="mr-2" href="#">{{ b.title }}</a><strong style="align-content:flex-end;">${{b.price}}</strong>
+<script type="text/javascript">
+    document.getElementById("id_q").value = "{{ query }}"
+</script>
+
+
+{% if books %}
+    {% for b in books %}
+        <article class="media content-section">
+            <div class="media-body col-md-6">
+                <div class="aritcle-metadata">
+                    <a class="mr-2" href="#">{{ b.title }}</a><strong style="align-content:flex-end;">${{b.price}}</strong>
+                </div>
+                <p class="article-content">
+                    ISBN: {{ b.isbn }} 
+                    Author(s): {{ b.get_author }}
+                    Category: {{ b.get_category }}
+                    Publish Date: {{ b.publish_date }}
+                </p>
             </div>
-            <p class="article-content">
-                ISBN: {{ b.isbn }}<br/>
-                Publish Date: {{ b.publish_date }}
-            </p>
+            <div class="col-md-6" style="text-align:left; margin-top:5%;">
+                <button class="btn btn-outline-success" type="submit" />Add to Order
+            </div>
+        </article>
+    {% endfor %}
+{% else %}
+<div class="containter">
+    <div class="row">
+        <div class="card m-auto">
+            <div class="card-body mt-2 mb-2">
+                <h2 class="card-title">
+                    No results
+                </h2>
+                <p class="card-text">There were no results matching your search</p>
+            </div>
         </div>
-    </article>
-{% endfor %}
+    </div>
+</div>
+{% endif %}
+
+
+
 {% endblock content %}
