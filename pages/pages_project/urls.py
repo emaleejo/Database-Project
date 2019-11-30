@@ -17,8 +17,9 @@ Including another URLconf
 # pages_project/urls.py
 from django.contrib import admin
 from django.urls import path, include # new
-
+from users import views as u_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('pages.urls')), # new
+    path('register/', u_views.register, name='register'),
 ]

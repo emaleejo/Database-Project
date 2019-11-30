@@ -4,10 +4,23 @@
 
 <form class="form-inline my-2 my-lg-0">
 <p>&nbsp;</p>
-<p style="text-align: center;">Book Search</p>
+<p style="text-align: center;">Book Search </p>
 <p style="text-align: center;"><strong><input class="form-control mr-sm-2" name="search" type="search" placeholder="Book Name" aria-label="Search" /> </strong><button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button></p>
 <p style="text-align: center;">&nbsp;</p>
 <p style="text-align: center;"><input name="type" type="radio" value="book" />&nbsp;Books<br /> <input name="type" type="radio" value="author" />&nbsp;Authors<br /> <input name="type" type="radio" value="genres" />&nbsp;Genres</p>
 </form>
 
+{% for b in books %}
+    <article class="media content-section">
+        <div class="media-body">
+            <div class="aritcle-metadata">
+                <a class="mr-2" href="#">{{ b.title }}</a><strong style="align-content:flex-end;">${{b.price}}</strong>
+            </div>
+            <p class="article-content">
+                ISBN: {{ b.isbn }}<br/>
+                Publish Date: {{ b.publish_date }}
+            </p>
+        </div>
+    </article>
+{% endfor %}
 {% endblock content %}

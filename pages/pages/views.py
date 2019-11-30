@@ -14,4 +14,8 @@ def about(request):
     return render(request, 'about.html', {'title':'About'})
 
 def browse(request):
-    return render(request, 'browse.html', {'title':'Browse'})
+    context = {
+        'title':'Browse',
+        'books':Book.objects.all()
+    }
+    return render(request, 'browse.html', context)

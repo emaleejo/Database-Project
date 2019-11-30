@@ -16,3 +16,4 @@ admin.site.register(OrderItem)
 admin.site.register(Phone)
 admin.site.register(Supplier)
 admin.site.register(SupplierRep)
+
