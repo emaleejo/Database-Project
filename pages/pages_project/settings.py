@@ -79,7 +79,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         #'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'tester',                        #<-- database name
+        'NAME': 'library',                        #<-- database name
         'USER': 'admin',                        #<-- database username
         'PASSWORD': 'testpassword',                     #<-- database password
         'HOST': 'softwaredb.cqj4mkbkulv0.us-east-2.rds.amazonaws.com',
