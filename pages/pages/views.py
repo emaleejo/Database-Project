@@ -2,7 +2,7 @@
 # from django.views.generic import TemplateView
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from .models import Book, Author, Category
 from django.db.models import Q
 
@@ -29,6 +29,10 @@ class BookListView(ListView):
     template_name = 'browse.html'
     context_object_name = 'books'
     ordering = ['title']
+
+class BookDetailView(DetailView):
+    model = Book
+    template_name = 'book_detail.html'
 
 def get_queryset(query=None):
     queryset = []

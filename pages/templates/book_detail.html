@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+    <article class="media content-section">
+        <div class="media-body col-md-6">
+            <div class="aritcle-metadata">
+                <h2 class="article-title">{{ object.title }}</h2><strong style="align-content:flex-end;">${{object.price}}</strong>
+            </div>
+            <p class="article-content">
+                ISBN: {{ object.isbn }} 
+                Author(s): {{ object.get_author }}
+                Category: {{ object.get_category }}
+                Publish Date: {{ object.publish_date }}
+            </p>
+        </div>
+        <div class="col-md-6" style="text-align:left; margin-top:5%;">
+            <button class="btn btn-outline-success" type="submit" />Add to Order
+        </div>
+    </article>
+{% endblock %}
