@@ -1,26 +1,3 @@
-Adding a Author 
-
-insert into tester.`contact detail`
-values (default);
-
-insert into tester.author 
-values (default, ...., ...., ....., ....., last_insert_id());
-
-Adding a Book
-
-
-insert into tester.`contact detail`
-values (default);
-
-insert into tester.author 
-values (default, 'name', 'last', 'male', '2000-8-19', last_insert_id());
-
-insert into tester.writes
-values (last_insert_id(), default);
-
-insert into tester.book
-values (last_insert_id(), 'blah', '1009-10-10', 500);
-
 View Customers 
 
 select * from tester.customers;
@@ -31,7 +8,7 @@ select * from tester.order;
 
 View all books
 
-select * from tester.book;
+select * from tester.pages_book;
 
 View all Suppliers
 
@@ -43,3 +20,38 @@ select * from tester.author;
 
 Update customer details
 
+update tester.customers
+set ...
+where ...;
+
+Update Author details
+
+update tester.author
+set ...
+where ...;
+
+Update Book details
+
+update tester.pages_book
+set ...
+where ...;
+
+Remove Customer
+
+delete from tester.`contact detail`
+where ...;
+
+Remove Author
+
+delete from tester.`contact detail`
+where ...;
+
+Remove Book 
+
+delete from tester.pages_book
+where ...;
+
+Remove Supplier
+
+delete from tester.supplier
+where Name = ...;
