@@ -9,10 +9,6 @@ from django.db.models import Q
 def home(request):
     return render(request, 'home.html', {'title': 'Home'} )
 
-class BookListView(ListView):
-    model = Book
-    
-
 def about(request):
     return render(request, 'about.html', {'title':'About'})
 
@@ -27,6 +23,11 @@ def browse(request):
         'books':get_queryset(query),
     }
     return render(request, 'browse.html', context)
+
+class BookListView(ListView):
+    model = Book
+    template_name = 'browse.html'
+    context_object_name = 'books'
 
 def get_queryset(query=None):
     queryset = []
