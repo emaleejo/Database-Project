@@ -1,5 +1,8 @@
 from django.db import models
-
+from django.forms import ModelForm
+from django.conf import settings
+from django.shortcuts import reverse
+from django.contrib.auth.models import User
 # Create your models here.
 
 
@@ -49,8 +52,7 @@ class Book(models.Model):
     price = models.DecimalField(max_digits=3,decimal_places=2)
     categorized = models.ManyToManyField('Category')
     author = models.ManyToManyField('Author')
-    # list_author = ', '.join(['{0} {1}'.format(a.first_name, a.last_name) for a in author.all()[:3]])
-    
+
     def get_category(self):
         """Creates a string for the Genre. This is required to display genre in Admin."""
         return ', '.join([c.__str__() for c in self.categorized.all()[:3]])
@@ -64,6 +66,8 @@ class Book(models.Model):
 
     
 class Customer(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE, blank=True, null=True)
+
     CustomerID = models.AutoField(primary_key=True)
     # CustomerID = models.IntegerField(primary_key=True,unique=True, auto_created=True)
     first_name = models.CharField(max_length=45)
@@ -73,25 +77,27 @@ class Customer(models.Model):
     def __str__(self):
         return '{0}'.format(self.CustomerID)
 
+class OrderItem(models.Model):
+    ItemNumber = models.AutoField(primary_key=True)
+    Item_Price = models.DecimalField(max_digits=2,decimal_places=1)
+    # OrderID = models.ForeignKey(Order, on_delete=models.CASCADE)
+    item = models.OneToOneField(Book, on_delete=models.CASCADE, null=True)
+
+    def __str__(self):
+        return '{0}'.format(self.items.isbn)
 
 class Order(models.Model):
     OrderID = models.AutoField(primary_key=True)
-    # OrderID = models.IntegerField(primary_key=True, unique=True, auto_created=True)
-    Order_Date = models.DateField()
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
+    Order_Date = models.DateField(auto_now=True)
     Order_Value = models.IntegerField()
     cid = models.ForeignKey(Customer, on_delete=models.CASCADE, )
+    items = models.ManyToManyField(OrderItem)
 
     def __str__(self):
-        return '{0}'.format(self.OrderID)
+        return '{0}'.format(self.user.username)
 
-class OrderItem(models.Model):
-    ItemNumber = models.IntegerField(primary_key=True)
-    Item_Price = models.IntegerField()
-    OrderID = models.ForeignKey(Order, on_delete=models.CASCADE)
-    isbn = models.ForeignKey(Book, on_delete=models.CASCADE)
 
-    def __str__(self):
-        return '{0}'.format(self.ItemNumber)
 
 class Phone(models.Model):
     ContactID = models.ForeignKey(ContactDetail, on_delete=models.CASCADE)

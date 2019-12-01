@@ -34,7 +34,8 @@ def profile(request):
         'u_form': u_form,
     }
     return render(request, 'users/profile.html',context)
-
+    
+@login_required
 def change_password(request):
     if request.method == 'POST':
         form = PasswordChangeForm(request.user, request.POST)
