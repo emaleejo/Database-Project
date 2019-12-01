@@ -28,6 +28,7 @@ class BookListView(ListView):
     model = Book
     template_name = 'browse.html'
     context_object_name = 'books'
+    ordering = ['title']
 
 def get_queryset(query=None):
     queryset = []
