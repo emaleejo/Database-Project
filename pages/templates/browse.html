@@ -33,7 +33,7 @@
         <article class="media content-section">
             <div class="media-body col-md-6">
                 <div class="aritcle-metadata">
-                    <a class="mr-2" href="#">{{ b.title }}</a><strong style="align-content:flex-end;">${{b.price}}</strong>
+                    <a class="mr-2" href="{% url 'pages-detail' b.isbn %}">{{ b.title }}</a><strong style="align-content:flex-end;">${{b.price}}</strong>
                 </div>
                 <p class="article-content">
                     ISBN: {{ b.isbn }} 
