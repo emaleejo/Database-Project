@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% if items %}
+    {% for i in items%}
+        <article class="media content-section">
+            <div class="media-body col-md-6">
+                <div class="aritcle-metadata">
+                    <h2 class="article-title">{{ i.item.title }}</h2>
+                    <strong style="align-content:flex-end;">${{i.item.price}}</strong>
+                </div>
+            </div>
+        </article>
+    {% endfor %}
+    {%else%}
+    <h1>goofed</h1>
+    {%endif%}
+{% endblock %}

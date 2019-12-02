@@ -46,6 +46,9 @@ class Category(models.Model):
     def __str__(self):
         return self.CategoryDescription
 
+class Review(models.Model):
+    pass
+
 class Book(models.Model):
     isbn = models.IntegerField(primary_key=True)
     title = models.CharField(max_length=45)
@@ -91,7 +94,7 @@ class Order(models.Model):
     OrderID = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
     Order_Date = models.DateField(auto_now=True)
-    Order_Value = models.FloatField()
+    Order_Value = models.FloatField(default=0)
     # cid = models.ForeignKey(User.id, on_delete=models.CASCADE, )
     items = models.ManyToManyField(OrderItem)
 

@@ -28,12 +28,10 @@ def browse(request):
 
 @login_required
 def add_to_cart(request, isbn):
-    print(isbn)
-    # isbn = request.POST.get('isbn')
     item = Book.objects.filter(isbn=isbn).first()
     price = decimal.Decimal(item.price)
     print(price)
-    order, created = Order.objects.get_or_create(user=request.user,Order_Value=1)
+    order, created = Order.objects.get_or_create(user=request.user,Order_Value=price)
     orderitem, created = OrderItem.objects.get_or_create(item=item, Item_Price=price, order=order)
     order.save()
     messages.success(request, 'Cart Updated!')
@@ -49,8 +47,15 @@ class BookDetailView(DetailView):
     model = Book
     template_name = 'book_detail.html'
 
-class OrderListView(ListView):
-    pass
+def order(request):
+    o = Order.objects.filter(user=request.user)
+    o = list(o.first().items.all())
+    context={
+        'title':'Order',
+        'items':o
+    }
+
+    return render(request,'order_detail.html', context)
 
 def get_queryset(query=None):
     queryset = []
