@@ -13,6 +13,7 @@
                 <a class="btn btn-outline-danger" href="{% url 'remove' i.ItemNumber %}">Remove</object></a>
             </div>
         </article>
+        <a class="btn btn-outline-success" href="{% url 'complete'%}">Order</a>
     {% endfor %}
     {%else%}
     <h1>Your cart is Empty</h1>
