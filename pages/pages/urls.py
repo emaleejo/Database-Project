@@ -14,4 +14,5 @@ urlpatterns = [
     path('browse/<int:pk>/', BookDetailView.as_view(), name='pages-detail'),
     path('browse/<int:pk>/new/', ReviewCreateView.as_view(), name='book-review'),
     path('cart/<int:isbn>', views.add_to_cart, name='pages-add'),
+    path('complete/', views.complete, name='complete'),
 ]   

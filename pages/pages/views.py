@@ -90,3 +90,5 @@ def get_queryset(query=None):
 
     return list(set(queryset))
 
+def complete(request):
+    return render(request, 'complete.html', {'title':'Complete'})
