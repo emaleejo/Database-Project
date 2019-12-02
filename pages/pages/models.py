@@ -1,7 +1,7 @@
 from django.db import models
 from django.forms import ModelForm
 from django.conf import settings
-from django.shortcuts import reverse
+from django.urls import reverse
 from django.contrib.auth.models import User
 # Create your models here.
 
@@ -46,8 +46,38 @@ class Category(models.Model):
     def __str__(self):
         return self.CategoryDescription
 
+class Supplier(models.Model):
+    Name = models.CharField(max_length=45, primary_key=True)
+
+    def __str__(self):
+        return self.Name
+
+class SupplierRep(models.Model):
+    sid = models.AutoField(primary_key=True)
+    first_name = models.CharField(max_length=45)
+    last_name = models.CharField(max_length=45)
+    cell_number = models.CharField(max_length=13)
+    work_number = models.CharField(max_length=13)
+    email = models.CharField(max_length=45)
+
+    class Meta:
+        unique_together = (('first_name','last_name' ),)
+
+    def __str__(self):
+        return '{0}, {1} {2}'.format(self.sid, self.first_name, self.last_name)
+
 class Review(models.Model):
-    pass
+
+    title = models.CharField(max_length=50, default='')
+    text = models.TextField()
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.title
+
+    def get_absolute_url(self):
+        return reverse('pages-browse')
+
 
 class Book(models.Model):
     isbn = models.IntegerField(primary_key=True)
@@ -56,6 +86,8 @@ class Book(models.Model):
     price = models.FloatField()
     categorized = models.ManyToManyField('Category')
     author = models.ManyToManyField('Author')
+    supplied = models.ForeignKey(Supplier, on_delete=models.CASCADE,default='Walmart')
+    review = models.ManyToManyField(Review)
 
     def get_category(self):
         """Creates a string for the Genre. This is required to display genre in Admin."""
@@ -110,22 +142,3 @@ class Phone(models.Model):
     def __str__(self):
         return '{0}'.format(self.number)
 
-class Supplier(models.Model):
-    Name = models.CharField(max_length=45, primary_key=True)
-
-    def __str__(self):
-        return self.Name
-
-class SupplierRep(models.Model):
-    sid = models.AutoField(primary_key=True)
-    first_name = models.CharField(max_length=45)
-    last_name = models.CharField(max_length=45)
-    cell_number = models.CharField(max_length=13)
-    work_number = models.CharField(max_length=13)
-    email = models.CharField(max_length=45)
-
-    class Meta:
-        unique_together = (('first_name','last_name' ),)
-
-    def __str__(self):
-        return '{0}, {1} {2}'.format(self.sid, self.first_name, self.last_name)

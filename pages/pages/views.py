@@ -1,8 +1,8 @@
 # pages/views.py
 # from django.views.generic import TemplateView
 from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic import ListView, DetailView
-from .models import Book, Author, Category, Order, OrderItem
+from django.views.generic import ListView, DetailView, CreateView
+from .models import Book, Author, Category, Order, OrderItem, Review
 from django.db.models import Q
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -45,6 +45,8 @@ def delete_from_cart(request, pk):
         messages.info(request, "Item has been deleted")
     return redirect('order')
 
+
+
 class BookListView(ListView):
     model = Book
     template_name = 'browse.html'
@@ -54,6 +56,16 @@ class BookListView(ListView):
 class BookDetailView(DetailView):
     model = Book
     template_name = 'book_detail.html'
+
+class ReviewCreateView(CreateView):
+    model = Review
+    template_name = 'review.html'
+    fields = ['title','text']
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+    
 
 def order(request):
     o = Order.objects.filter(user=request.user)
