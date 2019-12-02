@@ -30,12 +30,20 @@ def browse(request):
 def add_to_cart(request, isbn):
     item = Book.objects.filter(isbn=isbn).first()
     price = decimal.Decimal(item.price)
-    print(price)
-    order, created = Order.objects.get_or_create(user=request.user,Order_Value=price)
-    orderitem, created = OrderItem.objects.get_or_create(item=item, Item_Price=price, order=order)
+    order, created = Order.objects.get_or_create(user=request.user,Order_Value=0)
+    orderitem, created = OrderItem.objects.get_or_create(item=item, Item_Price=0, order=order)
+    order.items.add(orderitem)
     order.save()
     messages.success(request, 'Cart Updated!')
     return redirect('pages-browse')
+
+@login_required
+def delete_from_cart(request, pk):
+    item_to_delete = OrderItem.objects.filter(ItemNumber=pk)
+    if item_to_delete.exists():
+        item_to_delete[0].delete()
+        messages.info(request, "Item has been deleted")
+    return redirect('order')
 
 class BookListView(ListView):
     model = Book

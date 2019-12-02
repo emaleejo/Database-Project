@@ -9,9 +9,12 @@
                     <strong style="align-content:flex-end;">${{i.item.price}}</strong>
                 </div>
             </div>
+            <div class="col-md-6">
+                <a class="btn btn-outline-danger" href="{% url 'remove' i.ItemNumber %}">Remove</object></a>
+            </div>
         </article>
     {% endfor %}
     {%else%}
-    <h1>goofed</h1>
+    <h1>Your cart is Empty</h1>
     {%endif%}
 {% endblock %}
