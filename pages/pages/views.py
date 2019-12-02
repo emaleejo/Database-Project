@@ -2,7 +2,7 @@
 # from django.views.generic import TemplateView
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DetailView, CreateView
-from .models import Book, Author, Category, Order, OrderItem, Review
+from .models import Book, Author, Category, Order, OrderItem
 from django.db.models import Q
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -58,9 +58,9 @@ class BookDetailView(DetailView):
     template_name = 'book_detail.html'
 
 class ReviewCreateView(CreateView):
-    model = Review
+    # model = Review
     template_name = 'review.html'
-    fields = ['title','text']
+    fields = ["title",'text']
 
     def form_valid(self, form):
         form.instance.author = self.request.user

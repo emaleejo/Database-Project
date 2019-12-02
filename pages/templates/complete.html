@@ -2,12 +2,19 @@
 <p>{% extends "base.html" %} {% block content %}</p>
 <h1 style="text-align: center; padding-top: 50pt; padding-bottom: 50pt;">Thank you,&nbsp;{{ user.username }}.</h1>
 <h1 style="text-align: center; padding-top: 50pt; padding-bottom: 50pt;">Your order will be available for pick up tomorrow at</h1>
-<div class ="col-md-4"></div>
-<div class ="col-md-4">312F Cole STEM</div>
-<div class ="col-md-4"></div>
-<div class ="col-md-4"></div>
-<div class ="col-md-4">1936 North St.</div>
-<div class ="col-md-4">Nacogdoches, TX 75962</div>
+<div class="row">
+    <div class ="col-md-4">&nbsp;</div>
+    <div class ="col-md-4" style="text-align: center;"><h2>312F Cole STEM</h2></div>
+    <div class ="col-md-4">&nbsp;</div>
+</div>
+<div class="row">
+        <div class ="col-md-4"></div>
+    <div class ="col-md-4" style="text-align: center;"><h2>1936 North St.</h2></div>
+</div>
+<div class="row">
+    <div class ="col-md-4"></div>
+    <div class ="col-md-4"style="text-align: center;"><h2>Nacogdoches, TX 75962</h2></div>
+</div>
 <div class ="col-md-4"></div>
 <div class ="col-md-4"></div>
 <p>{% endblock content %}</p>

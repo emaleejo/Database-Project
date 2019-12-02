@@ -3,7 +3,7 @@ from django.contrib import admin
 # Register your models here.
 from .models import (Book, Author, Category, ContactDetail, 
                     Address, Email, Customer, Order, OrderItem, 
-                    Phone, Supplier, SupplierRep, Review)
+                    Phone, Supplier, SupplierRep, )
 
 #admin.site.register(database)
 admin.site.register(Book)
@@ -18,6 +18,6 @@ admin.site.register(OrderItem)
 admin.site.register(Phone)
 admin.site.register(Supplier)
 admin.site.register(SupplierRep)
-admin.site.register(Review)
+# admin.site.register(Review)
 
 
