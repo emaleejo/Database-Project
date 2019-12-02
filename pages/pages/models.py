@@ -27,6 +27,7 @@ class Email(models.Model):
         return '{0}: {1}'.format(self.cid, self.email)
 
 
+
 class Author(models.Model):
     AuthorID = models.IntegerField(primary_key=True, auto_created=True, unique=True)
     first_name = models.CharField(max_length=45)
@@ -49,7 +50,7 @@ class Book(models.Model):
     isbn = models.IntegerField(primary_key=True)
     title = models.CharField(max_length=45)
     publish_date = models.DateField()
-    price = models.DecimalField(max_digits=3,decimal_places=2)
+    price = models.FloatField()
     categorized = models.ManyToManyField('Category')
     author = models.ManyToManyField('Author')
 
@@ -79,19 +80,19 @@ class Customer(models.Model):
 
 class OrderItem(models.Model):
     ItemNumber = models.AutoField(primary_key=True)
-    Item_Price = models.DecimalField(max_digits=2,decimal_places=1)
+    Item_Price = models.FloatField()
     # OrderID = models.ForeignKey(Order, on_delete=models.CASCADE)
     item = models.OneToOneField(Book, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
-        return '{0}'.format(self.items.isbn)
+        return '{0}'.format(self.item.title)
 
 class Order(models.Model):
     OrderID = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
     Order_Date = models.DateField(auto_now=True)
-    Order_Value = models.IntegerField()
-    cid = models.ForeignKey(Customer, on_delete=models.CASCADE, )
+    Order_Value = models.FloatField()
+    # cid = models.ForeignKey(User.id, on_delete=models.CASCADE, )
     items = models.ManyToManyField(OrderItem)
 
     def __str__(self):

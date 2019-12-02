@@ -6,6 +6,7 @@ from .models import Book, Author, Category, Order, OrderItem
 from django.db.models import Q
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+import decimal as decimal
 
 def home(request):
     return render(request, 'home.html', {'title': 'Home'} )
@@ -27,10 +28,13 @@ def browse(request):
 
 @login_required
 def add_to_cart(request, isbn):
-    isbn = request.POST.get('isbn')
+    print(isbn)
+    # isbn = request.POST.get('isbn')
     item = Book.objects.filter(isbn=isbn).first()
-    order, created = Order.objects.get_or_create(user=request.user)
-    orderitem, created = OrderItem.objects.get_or_create(book=item, order=order)
+    price = decimal.Decimal(item.price)
+    print(price)
+    order, created = Order.objects.get_or_create(user=request.user,Order_Value=1)
+    orderitem, created = OrderItem.objects.get_or_create(item=item, Item_Price=price, order=order)
     order.save()
     messages.success(request, 'Cart Updated!')
     return redirect('pages-browse')
@@ -45,13 +49,16 @@ class BookDetailView(DetailView):
     model = Book
     template_name = 'book_detail.html'
 
+class OrderListView(ListView):
+    pass
+
 def get_queryset(query=None):
     queryset = []
     queries = query.split(" ")
     for q in queries:
         results = Book.objects.filter(
             Q(title__icontains=q) |
-            Q(isbn__icontains=q)
+            Q(isbn__icontains=q) 
         ).distinct()
     for b in results:
         queryset.append(b)
