@@ -8,7 +8,7 @@ from .views import BookListView, BookDetailView, ReviewCreateView
 urlpatterns = [
     path('', views.home, name='pages-home'),
     path('about/', views.about, name='pages-about'), # new
-    path('browse/', BookListView.as_view(), name='pages-browse'),
+    path('browse/', views.browse, name='pages-browse'),
     path('order/', views.order, name='order'),
     path('remove/<int:pk>', views.delete_from_cart, name='remove'),
     path('browse/<int:pk>/', BookDetailView.as_view(), name='pages-detail'),
