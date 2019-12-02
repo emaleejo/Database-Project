@@ -3,11 +3,11 @@ Database Stuff
 
 To run django webapp:
 
-command line:
-$ cd pages
-$ pipenv install django==2.2.5
-$ pipenv shell
-$ python manage.py runserver
+command line: <br />
+$ cd pages <br />
+$ pipenv install<br />
+$ pipenv shell<br />
+$ python manage.py runserver<br />
 
 webpage:
-127.0.0.1:8000
+localhost:8000
