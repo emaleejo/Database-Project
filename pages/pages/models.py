@@ -66,20 +66,16 @@ class SupplierRep(models.Model):
     def __str__(self):
         return '{0}, {1} {2}'.format(self.sid, self.first_name, self.last_name)
 
-# class Review(models.Model):
 
-#     title = models.CharField(max_length=50, default='')
-#     text = models.TextField()
-#     author = models.ForeignKey(User, on_delete=models.CASCADE)
-#     owner = models.ForeignKey(User, on_delete=models.CASCADE)
-#     item = models.OneToOneField('Book', on_delete=models.CASCADE, null=True)
-#     belongs = models.OneToOneField('Book', on_delete=models.CASCADE, null=True)
 
-#     def __str__(self):
-#         return self.title
+class Review(models.Model):
+    title = models.CharField(max_length=50, null=True)
+    text = models.TextField()
+    owner = models.ForeignKey(User, on_delete=models.CASCADE,default=1)
+    belongs = models.ForeignKey('Book', on_delete=models.CASCADE, default=122)
 
-#     def get_absolute_url(self):
-#         return reverse('pages-browse')
+    def __str__(self):
+        return self.title
 
 
 class Book(models.Model):
@@ -90,7 +86,7 @@ class Book(models.Model):
     categorized = models.ManyToManyField('Category')
     author = models.ManyToManyField('Author')
     supplied = models.ForeignKey(Supplier, on_delete=models.CASCADE,default='Walmart')
-    # rev = models.ManyToManyField(Review)
+    judgements = models.ManyToManyField(Review)
 
     def get_category(self):
         """Creates a string for the Genre. This is required to display genre in Admin."""
