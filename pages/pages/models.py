@@ -81,6 +81,8 @@ class Review(models.Model):
     def __str__(self):
         return self.title
 
+    def get_absolute_url(self):
+        return reverse('pages-browse') 
 
 class Book(models.Model):
     isbn = models.IntegerField(primary_key=True)
@@ -90,7 +92,7 @@ class Book(models.Model):
     categorized = models.ManyToManyField('Category')
     author = models.ManyToManyField('Author')
     supplied = models.ForeignKey(Supplier, on_delete=models.CASCADE,default='Walmart')
-    judgements = models.ManyToManyField(Review)
+    judgements = models.ManyToManyField(Review,null=True)
 
     def get_category(self):
         """Creates a string for the Genre. This is required to display genre in Admin."""
