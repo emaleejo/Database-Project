@@ -8,16 +8,19 @@ from django.contrib.auth.models import User
 
 class ContactDetail(models.Model):
     ContactID = models.IntegerField(auto_created=True, primary_key=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
+    addr = models.ManyToManyField('Address')
+    c_email = models.ManyToManyField('Email')
     
     def __str__(self):
-        return '{0}'.format(self.ContactID)
+        return '{0}'.format(self.user.username)
 
 class Address(models.Model):
-    cid = models.ForeignKey(ContactDetail, on_delete=models.CASCADE)
+    cid = models.ForeignKey(ContactDetail, on_delete=models.CASCADE,default=1)
     addr = models.CharField(max_length=45, primary_key=True)
 
     def __str__(self):
-        return '{0}, {1}'.format(self.cid, self.addr)
+        return '{0}'.format(self.addr)
 
 class Email(models.Model):
     cid = models.ForeignKey(ContactDetail, on_delete=models.CASCADE)
@@ -48,6 +51,7 @@ class Category(models.Model):
 
 class Supplier(models.Model):
     Name = models.CharField(max_length=45, primary_key=True)
+    rep = models.OneToOneField('SupplierRep',on_delete=models.CASCADE,null=True)
 
     def __str__(self):
         return self.Name
