@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+from socket import gethostbyname, gethostname
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,8 +26,8 @@ SECRET_KEY = '$5**bxl^7tm()+=0&^kc)7y63*$ktj*d)#8jk($l0hsal7q@6m'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-from socket import gethostbyname, gethostname
-ALLOWED_HOSTS = [gethostname(), gethostbyname(gethostname()), 'localhost','127.0.0.1']
+ALLOWED_HOSTS = [gethostname(), gethostbyname(gethostname()),
+                 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -38,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'pages.apps.PagesConfig', # new
+    'pages.apps.PagesConfig',
     'users.apps.UsersConfig',
     'crispy_forms',
 ]
@@ -58,7 +59,7 @@ ROOT_URLCONF = 'pages_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')], # new
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -80,14 +81,14 @@ WSGI_APPLICATION = 'pages_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        #'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'library',                        #<-- database name
-        'USER': 'admin',                        #<-- database username
-        'PASSWORD': 'testpassword',                     #<-- database password
+        # 'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'library',  # <-- database name
+        'USER': 'admin',  # <-- database username
+        'PASSWORD': 'testpassword',  # <-- database password
         'HOST': 'softwaredb.cqj4mkbkulv0.us-east-2.rds.amazonaws.com',
-        'PORT': '3306',                         #<-- Change it port you're using
+        'PORT': '3306',  # <-- Change it port you're using
         'OPTIONS': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",                           
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
         }
     }
 }
@@ -95,18 +96,19 @@ DATABASES = {
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
 
+pass_path = 'django.contrib.auth.password_validation'
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME': '{pass_path}.UserAttributeSimilarityValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME': '{pass_path}.MinimumLengthValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME': '{pass_path}.CommonPasswordValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME': '{pass_path}.NumericPasswordValidator',
     },
 ]
 

@@ -2,7 +2,7 @@
 
 from django.conf import settings
 from django.db import migrations, models
-import django.db.models.deletion
+import django.db.models.deletion as dd
 
 
 class Migration(migrations.Migration):
@@ -16,6 +16,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='contactdetail',
             name='user',
-            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL),
+            field=models.ForeignKey(default=1, on_delete=dd.CASCADE,
+                                    to=settings.AUTH_USER_MODEL),
         ),
     ]

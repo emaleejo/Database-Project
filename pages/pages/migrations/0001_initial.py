@@ -2,7 +2,7 @@
 
 from django.conf import settings
 from django.db import migrations, models
-import django.db.models.deletion
+import django.db.models.deletion as dd
 
 
 class Migration(migrations.Migration):
@@ -17,7 +17,10 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Author',
             fields=[
-                ('AuthorID', models.IntegerField(auto_created=True, primary_key=True, serialize=False, unique=True)),
+                ('AuthorID', models.IntegerField(auto_created=True,
+                                                 primary_key=True,
+                                                 serialize=False,
+                                                 unique=True)),
                 ('first_name', models.CharField(max_length=45)),
                 ('last_name', models.CharField(max_length=45)),
                 ('gender', models.CharField(max_length=45)),
@@ -27,7 +30,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Book',
             fields=[
-                ('isbn', models.IntegerField(primary_key=True, serialize=False)),
+                ('isbn', models.IntegerField(primary_key=True,
+                                             serialize=False)),
                 ('title', models.CharField(max_length=45)),
                 ('publish_date', models.DateField()),
                 ('price', models.FloatField()),
@@ -37,20 +41,26 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Category',
             fields=[
-                ('CategoryCode', models.IntegerField(primary_key=True, serialize=False, unique=True)),
-                ('CategoryDescription', models.CharField(max_length=45, unique=True)),
+                ('CategoryCode', models.IntegerField(primary_key=True,
+                                                     serialize=False,
+                                                     unique=True)),
+                ('CategoryDescription', models.CharField(max_length=45,
+                                                         unique=True)),
             ],
         ),
         migrations.CreateModel(
             name='ContactDetail',
             fields=[
-                ('ContactID', models.IntegerField(auto_created=True, primary_key=True, serialize=False)),
+                ('ContactID', models.IntegerField(auto_created=True,
+                                                  primary_key=True,
+                                                  serialize=False)),
             ],
         ),
         migrations.CreateModel(
             name='Judgement',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.AutoField(auto_created=True, primary_key=True,
+                                        serialize=False, verbose_name='ID')),
                 ('title', models.CharField(max_length=50, null=True)),
                 ('text', models.TextField()),
             ],
@@ -58,7 +68,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Supplier',
             fields=[
-                ('Name', models.CharField(max_length=45, primary_key=True, serialize=False)),
+                ('Name', models.CharField(max_length=45, primary_key=True,
+                                          serialize=False)),
             ],
         ),
         migrations.CreateModel(
@@ -78,43 +89,58 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Phone',
             fields=[
-                ('number', models.CharField(max_length=13, primary_key=True, serialize=False)),
-                ('ContactID', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='pages.ContactDetail')),
+                ('number', models.CharField(max_length=13, primary_key=True,
+                                            serialize=False)),
+                ('ContactID', models.ForeignKey(on_delete=dd.CASCADE,
+                                                to='pages.ContactDetail')),
             ],
         ),
         migrations.CreateModel(
             name='OrderItem',
             fields=[
-                ('ItemNumber', models.AutoField(primary_key=True, serialize=False)),
+                ('ItemNumber', models.AutoField(primary_key=True,
+                                                serialize=False)),
                 ('Item_Price', models.FloatField()),
-                ('item', models.OneToOneField(null=True, on_delete=django.db.models.deletion.CASCADE, to='pages.Book')),
+                ('item', models.OneToOneField(null=True,
+                                              on_delete=dd.CASCADE,
+                                              to='pages.Book')),
             ],
         ),
         migrations.CreateModel(
             name='Order',
             fields=[
-                ('OrderID', models.AutoField(primary_key=True, serialize=False)),
+                ('OrderID', models.AutoField(primary_key=True,
+                                             serialize=False)),
                 ('Order_Date', models.DateField(auto_now=True)),
                 ('Order_Value', models.FloatField(default=0)),
                 ('items', models.ManyToManyField(to='pages.OrderItem')),
-                ('user', models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                ('user', models.ForeignKey(default=1,
+                                           on_delete=dd.CASCADE,
+                                           to=settings.AUTH_USER_MODEL)),
             ],
         ),
         migrations.CreateModel(
             name='Email',
             fields=[
-                ('email', models.CharField(max_length=45, primary_key=True, serialize=False)),
-                ('cid', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='pages.ContactDetail')),
+                ('email', models.CharField(max_length=45,
+                                           primary_key=True,
+                                           serialize=False)),
+                ('cid', models.ForeignKey(on_delete=dd.CASCADE,
+                                          to='pages.ContactDetail')),
             ],
         ),
         migrations.CreateModel(
             name='Customer',
             fields=[
-                ('CustomerID', models.AutoField(primary_key=True, serialize=False)),
+                ('CustomerID', models.AutoField(primary_key=True,
+                                                serialize=False)),
                 ('first_name', models.CharField(max_length=45)),
                 ('last_name', models.CharField(max_length=45)),
-                ('ContactID', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='pages.ContactDetail')),
-                ('user', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                ('ContactID', models.ForeignKey(on_delete=dd.CASCADE,
+                                                to='pages.ContactDetail')),
+                ('user', models.ForeignKey(blank=True, null=True,
+                                           on_delete=dd.CASCADE,
+                                           to=settings.AUTH_USER_MODEL)),
             ],
         ),
         migrations.AddField(
@@ -125,18 +151,22 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='book',
             name='supplied',
-            field=models.ForeignKey(default='Walmart', on_delete=django.db.models.deletion.CASCADE, to='pages.Supplier'),
+            field=models.ForeignKey(default='Walmart', on_delete=dd.CASCADE,
+                                    to='pages.Supplier'),
         ),
         migrations.AddField(
             model_name='author',
             name='ContactID',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='pages.ContactDetail'),
+            field=models.ForeignKey(on_delete=dd.CASCADE,
+                                    to='pages.ContactDetail'),
         ),
         migrations.CreateModel(
             name='Address',
             fields=[
-                ('addr', models.CharField(max_length=45, primary_key=True, serialize=False)),
-                ('cid', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='pages.ContactDetail')),
+                ('addr', models.CharField(max_length=45,
+                                          primary_key=True, serialize=False)),
+                ('cid', models.ForeignKey(on_delete=dd.CASCADE,
+                                          to='pages.ContactDetail')),
             ],
         ),
     ]
